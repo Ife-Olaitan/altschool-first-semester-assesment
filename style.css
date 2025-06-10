@@ -1,0 +1,177 @@
+/* Basic reset */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Hide for screen readers only */
+.sr-only {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Calculator container */
+.calculator {
+    background-color: #1e1e2f;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Display screen */
+.display {
+    width: 100%;
+    height: 70px;
+    background-color: #3a3a7a;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    text-align: right;
+    padding: 15px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+/* Buttons grid */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+/* Individual button styles */
+button {
+    padding: 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50%;
+    background-color: #35354a;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background-color: #5c5c7c;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Operator button special styles */
+.operator {
+    background-color: orange;
+}
+
+.operator:hover {
+    background-color: darkorange;
+}
+
+/* Equals button style */
+.equals {
+    background-color: #ccc;
+    color: black;
+}
+
+.equals:hover {
+    background-color: #bbb;
+}
+
+/* History panel container */
+.history-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 280px;
+    max-height: 320px;
+    overflow-y: auto;
+    background-color: #1e1e2f;
+    border: 1px solid #3a3a7a;
+    border-radius: 15px;
+    padding: 15px;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 1000;
+    font-size: 0.9rem;
+}
+
+/* History title section */
+.history-container h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 10px;
+    font-size: 1rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+/* Individual history entries */
+.history-entry {
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+    font-family: monospace;
+    color: #ccc;
+}
+
+/* Close history button */
+.close-btn {
+    background-color: #444;
+    border: none;
+    color: white;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: #ff4d4d;
+}
+
+/* Responsive styling */
+@media (max-width: 480px) {
+    .buttons {
+        gap: 8px;
+    }
+
+    button {
+        padding: 16px;
+        font-size: 1rem;
+    }
+
+    .display {
+        font-size: 1.6rem;
+        padding: 10px;
+    }
+
+    .history-container {
+        top: auto;
+        bottom: 10px;
+        right: 10px;
+        width: 90%;
+        max-width: 300px;
+    }
+}

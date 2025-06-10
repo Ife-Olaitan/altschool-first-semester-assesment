@@ -23,26 +23,26 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     // Close history
-    closeHistoryBtn.addEventListener("click", toggleHistory);
+    closeHistoryBtn.addEventListener("click", () => toggleHistory());
 
     // Append number
-    function append(value) {
+    const append = (value) => {
         if (display.value === "0" || display.value === "Error") {
             display.value = value;
         } else {
             display.value += value;
         }
-    }
+    };
 
     // Prevent multiple decimal points
-    function appendDot() {
+    const appendDot = () => {
         let last = getLastNumber();
         if (!last.includes(".")) {
             append(".");
         }
-    }
+    };
 
-    function getLastNumber() {
+    const getLastNumber = () => {
         let input = display.value;
         let ops = ["+", "-", "×", "÷", "%"];
         let last = "";
@@ -51,10 +51,10 @@ window.addEventListener("DOMContentLoaded", () => {
             last = input[i] + last;
         }
         return last;
-    }
+    };
 
     // Add or replace operator
-    function appendOperator(op) {
+    const appendOperator = (op) => {
         const last = display.value.slice(-1);
         const ops = ["+", "-", "×", "÷", "%"];
         if (ops.includes(last)) {
@@ -62,21 +62,21 @@ window.addEventListener("DOMContentLoaded", () => {
         } else if (display.value !== "0" && display.value !== "Error") {
             display.value += op;
         }
-    }
+    };
 
     // Clear input
-    function clearDisplay() {
+    const clearDisplay = () => {
         display.value = "0";
-    }
+    };
 
     // Remove last character
-    function backspace() {
+    const backspace = () => {
         display.value = display.value.slice(0, -1);
         if (display.value === "") display.value = "0";
-    }
+    };
 
     // Evaluate expression
-    function calculate() {
+    const calculate = () => {
         try {
             let expr = display.value.replace("×", "*").replace("÷", "/");
 
@@ -100,21 +100,21 @@ window.addEventListener("DOMContentLoaded", () => {
         } catch {
             display.value = "Error";
         }
-    }
+    };
 
     // Add to history
-    function addToHistory(entry) {
+    const addToHistory = (entry) => {
         const div = document.createElement("div");
         div.className = "history-entry";
         div.textContent = entry;
         historyList.appendChild(div);
-    }
+    };
 
     // Show/hide history
-    function toggleHistory() {
+    const toggleHistory = () => {
         showingHistory = !showingHistory;
         historyPanel.style.display = showingHistory ? "block" : "none";
-    }
+    };
 
     // Handle keyboard
     document.addEventListener("keydown", (e) => {
